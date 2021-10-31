@@ -1,0 +1,15 @@
+.cards_container {
+  display: flex;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.main_info {
+  display: block;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.movie_info {
+  font-weight: 400;
+}
