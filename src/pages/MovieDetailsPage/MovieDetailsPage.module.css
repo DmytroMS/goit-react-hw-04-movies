@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.addinfocontainer {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .main_info {
   display: block;
   margin-left: 20px;
@@ -12,4 +17,21 @@
 
 .movie_info {
   font-weight: 400;
+}
+
+.link {
+  display: inline-block;
+  padding: 25px;
+  margin-bottom: 15px;
+  text-decoration: none;
+  padding: 12px;
+  text-align: center;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 20px;
+}
+
+.activeLink {
+  composes: link;
+  color: #2196f3;
 }

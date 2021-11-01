@@ -3,6 +3,7 @@ import { NavLink, Route, useRouteMatch } from "react-router-dom";
 import * as movieApi from '../servises/movieApi';
 import Cast from "./CastPage/CastPage";
 import Reviews from "./Reviews/Reviews";
+import s from './MovieDetailsPage/MovieDetailsPage.module.css'
 
 export default function MovieDetailsPageViews() {
     const {url, path} = useRouteMatch();
@@ -12,22 +13,24 @@ export default function MovieDetailsPageViews() {
     return (
 
         <>
+           
             <MovieDetailsPage />
+             <div className={s.addinfocontainer}>
             <div>
                 <h2>Additional Information</h2>
             </div>
             <NavLink
             exact to={`${url}/cast`}
-            // className={s.link}
-            // activeClassName={s.activeLink}
+            className={s.link}
+            activeClassName={s.activeLink}
         >
             Cast
             </NavLink>
             
             <NavLink
             exact to={`${url}/reviews`}
-            // className={s.link}
-            // activeClassName={s.activeLink}
+            className={s.link}
+            activeClassName={s.activeLink}
         >
             Reviews
             </NavLink>
@@ -41,6 +44,7 @@ export default function MovieDetailsPageViews() {
             <Reviews />
           </div>
         </Route>
+           </div>
             </>
     )
 }
