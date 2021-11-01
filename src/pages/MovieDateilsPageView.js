@@ -7,8 +7,7 @@ import s from './MovieDetailsPage/MovieDetailsPage.module.css'
 
 export default function MovieDetailsPageViews() {
     const {url, path} = useRouteMatch();
-    const dd = useRouteMatch();
-    console.log('dd', dd);
+   
 
     return (
 

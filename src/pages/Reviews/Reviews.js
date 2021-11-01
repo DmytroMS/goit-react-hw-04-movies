@@ -10,8 +10,7 @@ export default function Reviews() {
   useEffect(() => {
     movieApi
       .fatchReviews(movieID)
-      .then((data) => setReviews(data.results))
-      .catch(console.log("Error on Review Fetch"));
+      .then((data) => setReviews(data.results));
   }, [movieID]);
 
   return (

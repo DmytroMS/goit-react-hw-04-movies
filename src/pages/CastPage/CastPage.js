@@ -10,8 +10,7 @@ export default function Cast() {
   useEffect(() => {
     movieApi
       .fetchCast(movieID)
-      .then((data) => setCast(data.cast))
-      .catch(console.log("Error on CastPage"));
+      .then((data) => setCast(data.cast));
   }, [movieID]);
 
   return (

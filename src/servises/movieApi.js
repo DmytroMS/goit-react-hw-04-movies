@@ -1,5 +1,8 @@
+import axios from "axios";
+
 const API_KEY = '1c92945d7b9e8de66cf2b53b0344c946';
 const BASE_URL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 async function fetchWithErrorHandling(url = '', config = {}) {
     const response = await fetch(url, config)
@@ -20,7 +23,7 @@ export function fetchTrending() {
 // Fetch  фильма по ID
 export function fetchMovieDetails(movieID) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}&language=en-US`,
+    `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`,
   );
 }
 
@@ -39,3 +42,16 @@ export function fatchReviews(movieID) {
 }
 
 
+// Fetch for input query
+// export function fetchMovies({query}) {
+//   return fetchWithErrorHandling(
+//     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`,
+//   );
+// }
+
+export const fetchMovies = async (query) => {
+  const response = await axios.get(
+    `/search/movie?api_key=${API_KEY}&query=${query}`
+  );
+  return response.data.results;
+};

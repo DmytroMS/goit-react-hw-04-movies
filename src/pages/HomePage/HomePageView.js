@@ -23,7 +23,7 @@ function HomePageView() {
                   src={
                     "https://image.tmdb.org/t/p/w200" + trendMovie.poster_path
                   }
-                  alt={trendMovie.title}
+                  alt={trendMovie.title} 
                 ></img>
               </Link>
             </li>

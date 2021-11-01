@@ -4,6 +4,7 @@ import AppBar from "./components/AppBar/AppBar";
 import NotFoundView from "./pages/NotFoundView";
 import HomePageView from "./pages/HomePageView";
 import MovieDetailsPageViews from "./pages/MovieDateilsPageView";
+import MoviesPageView from "./pages/MoviesPageView";
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
         <Route path="/" exact>
           <HomePageView />
         </Route>
-        {/* <Route path="/movies" exact>
+        <Route path="/movies" exact>
           <MoviesPageView />
-        </Route> */}
+        </Route>
         <Route path="/movies/:movieID">
           <MovieDetailsPageViews/>
         </Route>
