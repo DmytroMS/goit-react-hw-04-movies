@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import * as movieApi from "../../servises/movieApi";
 import s from "./MovieDetailsPage.module.css";
 
@@ -8,6 +8,16 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
 
+
+  const history = useHistory();
+  const location = useLocation();
+
+
+    const handleBack = () => {
+    history.push(location?.state?.from);
+  };
+
+    
   useEffect(() => {
     movieApi
       .fetchMovieDetails(movieID)
@@ -18,8 +28,12 @@ export default function MovieDetailsPage() {
 
   return (
     <>
+      
       {movie && (
         <>
+          <button type="button" onClick={handleBack}>
+        GO BACK
+      </button>
           <div className={s.cards_container}>
             <div>
               <img

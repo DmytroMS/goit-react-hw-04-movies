@@ -1,16 +1,19 @@
 import "./App.css";
+import { lazy, Suspense } from 'react';
 import { Switch, Route } from "react-router-dom";
 import AppBar from "./components/AppBar/AppBar";
-import NotFoundView from "./pages/NotFoundView";
-import HomePageView from "./pages/HomePageView";
-import MovieDetailsPageViews from "./pages/MovieDateilsPageView";
-import MoviesPageView from "./pages/MoviesPageView";
+
+const HomePageView = lazy(() => import('./pages/HomePageView' /* webpackChunkName: "homepage-view" */ ));
+const MovieDetailsPageViews = lazy(() => import('./pages/MovieDateilsPageView' /* webpackChunkName: "MovieDetailsPageViews" */));
+const MoviesPageView = lazy(() => import('./pages/MoviesPageView' /* webpackChunkName: "MoviesPageView" */));
+const NotFoundView = lazy(() => import('./pages/NotFoundView' /* webpackChunkName: "NotFoundView" */));
 
 function App() {
   return (
     <div className="App">
       <AppBar />
-      <Switch>
+      <Suspense fallback={<h1>LOADING ...</h1>}>
+              <Switch>
         <Route path="/" exact>
           <HomePageView />
         </Route>
@@ -24,6 +27,7 @@ function App() {
           <NotFoundView />
         </Route>
       </Switch>
+</Suspense>
     </div>
   );
 }
