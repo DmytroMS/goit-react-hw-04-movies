@@ -11,26 +11,34 @@ const MoviesPage = () => {
     const location = useLocation();
     const params = useParams();
 
+  const queryString = new URLSearchParams(location.search).get('query');
+
   const handleChange = (e) => {
     setQuery(e.currentTarget.value);
     };
     
     const handleSubmit = (e) => {
+      if (query === '') {
+      return;
+    }
         e.preventDefault();
         fetchMovies(query)
             .then((res) => setfoundMovies(res));
-        // history.push(
-        //     {
-        //         ...location,
-        //         search: `query=${query}`,
+        history.push(
+            {
+                ...location,
+                search: `query=${query}`,
                 
-        //     }, {state: query}
-        // );
+            }, {state: query}
+        );
     };
 
-    useEffect(() => {
-
-    }, [history]);
+  useEffect(() => {
+    if (location.search !== '') {
+      fetchMovies(queryString)
+        .then((res) => setfoundMovies(res));
+    }
+  }, [location.search, queryString]);
 
   return (
     <div>
@@ -46,7 +54,7 @@ const MoviesPage = () => {
                   src={
                     "https://image.tmdb.org/t/p/w200" + movie.poster_path
                   }
-                  alt={movie.title}
+                  alt={movie.title} width='200'
                 ></img>
               </Link>
             </li>
